@@ -36,11 +36,7 @@ const searchEventHandler = (event: Event) => {
 	const enteredAddress = addressInput.value;
 
 	axios
-		.get<GoogleGeocodingResponse>(
-			`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI(enteredAddress)}&key=${
-				process.env.GOOGLE_API_KEY
-			}`
-		)
+		.get<GoogleGeocodingResponse>(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI(enteredAddress)}&key=${GOOGLE_API_KEY}`)
 		.then((response) => {
 			if (response.data.status !== "OK") {
 				throw new Error("Could not fetch location status " + response.data.status);
