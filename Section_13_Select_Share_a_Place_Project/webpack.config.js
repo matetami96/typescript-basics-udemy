@@ -1,4 +1,5 @@
 const path = require('path');
+require('dotenv').config();
 
 module.exports = {
   mode: 'development',
@@ -26,5 +27,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js']
-  }
+  },
+  plugins:[
+		new webpack.DefinePlugin({
+			GOOGLE_API_KEY: JSON.stringify(process.env.GOOGLE_API_KEY),
+		}),
+  ]
 };
